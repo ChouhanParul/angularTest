@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Table</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="js/testTable.js"></script>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+    </head>
+    <body>
+        <div ng-app="TestModuleTable">
+            <div ng-controller="tableData">
+                <p>Search : <input type="text" ng-model="serachBy"></p>
+                <p>Order By: 
+                  <!-- <select ng-options="key in orderByKeys"></select>-->
+                </p>
+                <table>
+                    <tr>
+                      <th ng-click="orderBy('id')">First Name</th>
+                      <th ng-click="orderBy('first_name')">First Name</th>
+                      <th ng-click="orderBy('last_name')">Last Name</th>
+                      <th ng-click="orderBy('address')">Address</th>
+                    </tr>
+                    <tr ng-repeat="user in data | orderBy:setOrderBy | filter:serachBy">
+                      <td>{{user.id}}</td>
+                      <td>{{user.first_name}}</td>
+                      <td>{{user.last_name}}</td>
+                      <td>{{user.address}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

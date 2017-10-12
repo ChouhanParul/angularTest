@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="js/index.js"></script>
+<body>
+    <!--
+    <div ng-app="A" ng-init="myCol ='lightblue';name='Enter Yors Name Here'">
+        <p>Name : <input style="background-color: {{myCol}}" type="text" ng-model="name" value="{{name}}"></p>
+    <p ng-bind="name"></p>
+    </div>
+    <div ng-app="B" ng-init="FirstName ='Parul';LastName = 'Chouhan'">
+        <p>Name : {{FirstName+" "+LastName}}</p>
+        
+    </div>
+    -->
+    <!--
+    <div ng-app="" ng-init="person={FirstName:'Parul',lastName:'Chouhan'}">
+        <p>First Name : {{person.FirstName}} </p>
+    </div>
+    -->
+    <!--
+    <div ng-app="" ng-init="points=['1','2','3']">
+        <p>{{points[0]}}</p>
+    </div>
+    -->
+    <!-- Define Modules
+    <div ng-app="TestModule1">
+        <div ng-controller="TestController">
+            <div ng-repeat="user in users">
+                <p>First Name : {{user.FirstName}}</p>
+                <p>Last Name : {{user.LastName}}</p>
+            </div>
+        </div>
+    </div>
+     -->
+    <div ng-app="TestModule1">
+        <div ng-controller="TestController1 ">
+                <p>FullName : {{fullName()}}</p>
+        </div>
+    </div>
+
+</body>
+</html>
+
