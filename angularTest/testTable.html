@@ -5,6 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
         <script src="js/testTable.js"></script>
+        <script src="js/filters.js"></script>
+        
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"></script>
+
         <style>
             table {
                 font-family: arial, sans-serif;
@@ -26,24 +31,40 @@
     <body>
         <div ng-app="TestModuleTable">
             <div ng-controller="tableData">
-                <p>Search : <input type="text" ng-model="serachBy"></p>
-                <p>Order By: 
-                  <!-- <select ng-options="key in orderByKeys"></select>-->
-                </p>
-                <table>
-                    <tr>
-                      <th ng-click="orderBy('id')">First Name</th>
-                      <th ng-click="orderBy('first_name')">First Name</th>
-                      <th ng-click="orderBy('last_name')">Last Name</th>
-                      <th ng-click="orderBy('address')">Address</th>
-                    </tr>
-                    <tr ng-repeat="user in data | orderBy:setOrderBy | filter:serachBy">
-                      <td>{{user.id}}</td>
-                      <td>{{user.first_name}}</td>
-                      <td>{{user.last_name}}</td>
-                      <td>{{user.address}}</td>
-                    </tr>
-                </table>
+                <div>
+                    <p>Search : <input type="text" ng-model="serachBy"></p>
+                    <p>Order By: {{setOrderBy}} <span>{{orderByText}}</span></p>
+                    <table>
+                        <thead>
+                            <tr>
+                              <th ng-click="orderBy('id')">id</th>
+                              <th ng-click="orderBy('first_name')">First Name</th>
+                              <th ng-click="orderBy('last_name')">Last Name</th>
+                              <th ng-click="orderBy('address')">Address</th>
+                              <th ng-click="orderBy('create_date')">Create Date</th>
+                              <th ng-click="orderBy('update_date')">Update Date</th>
+                              <th ng-click="orderBy('status')">Status</th>
+                              <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="user in data | orderBy:setOrderBy:setOrderReverse | filter:serachBy">
+                              <td>{{user.id}}</td>
+                              <td>{{user.first_name}}</td>
+                              <td>{{user.last_name}}</td>
+                              <td>{{user.address}}</td>
+                              <td>{{user.create_date}}</td>
+                              <td>{{user.update_date}}</td>
+                              <td>{{user.status | capitalize }}</td>
+                              <td>Edit</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>&nbsp;</div>
+                <div>
+                    <a href="userForm.html">Add New User</a>
+                </div>
             </div>
         </div>
     </body>

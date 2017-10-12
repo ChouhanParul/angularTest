@@ -6,10 +6,17 @@ app.controller("tableData",function($scope,$http){
             .then(function(response){
                 $scope.data = response.data.data;
                 $scope.orderByKeys = Object.keys(response.data.data[0]);
-                console.log($scope.orderByKeys)
             });
-    
+    $scope.setOrderBy = "update_date";
+    $scope.setOrderReverse = false;
+    $scope.orderByText = 'Desc'
     $scope.orderBy = function(x) {
+        $scope.setOrderReverse = ($scope.setOrderBy == x)?! $scope.setOrderReverse : false
+        if($scope.setOrderReverse) {
+            $scope.orderByText = 'Desc';
+        } else {
+            $scope.orderByText = 'Asc';
+        }
         $scope.setOrderBy = x;
     }
 })

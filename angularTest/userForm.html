@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="js/userForm.js"></script>
+    <body>
+        <div ng-app="TestModuleForm">
+            <div ng-controller="FromData">
+                <div>
+                    <a href="testTable.html">Back to user list</a>
+                </div>
+                <div>&nbsp;</div>
+                <div>
+                    <form name="userForm">
+                        First name: <input type="text" name="first_name" placeholder="Enter First Name" ng-model="first_name" required/>
+                        <span ng-show="userForm.first_name.$touched && userForm.first_name.$invalid">The first name is required.</span>
+                        <br><br>
+                        Last name: <input type="text" name="last_name" ng-model="last_name" placeholder="Enter Last Name" required/>
+                        <span ng-show="userForm.last_name.$touched && userForm.last_name.$invalid">The Last name is required.</span>
+                        <br><br>
+                        Address: <input type="text" name="address" ng-model="address" placeholder="Enter Address" required/>
+                        <span ng-show="userForm.address.$touched && userForm.address.$invalid">The Address is required.</span>
+                        <br><br>
+                        Email: <input type="email" name="email" ng-model="email" placeholder="Enter Email" required/>
+                        <span ng-show="userForm.email.$touched && userForm.email.$invalid">The Email is required.</span>
+                        <br><br>
+                        Tel No. <input type="number" name="phone_number" ng-model="phone_number" placeholder="Enter Tel No" required/>
+                        <span ng-show="userForm.phone_number.$touched && userForm.phone_number.$invalid">The Phone is required.</span>
+                        <br><br>
+                        Status <input type="radio" name="status" ng-model="status" value="active" required/>Active<input ng-model="status" type="radio" name="status" value="inactive">Inactive
+                        <span ng-show="userForm.status.$touched && userForm.status.$invalid">The Status is required.</span>
+                        <br><br>
+                        <button ng-click="reset()">RESET</button> 
+                        <button ng-click="addUser()" >SUBMIT</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
